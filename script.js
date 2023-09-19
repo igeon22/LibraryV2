@@ -9,6 +9,7 @@ let evals = document.querySelector("#rating")
 let cont = document.querySelector(".books")
 let cont2 = document.querySelector(".tf")
 var a = 0;
+var last = 0;
 
 let clk = document.querySelector(".rt")
 let nav = document.querySelector("nav")
@@ -18,6 +19,37 @@ let h = document.querySelector("#home")
 let m = document.querySelector("#movies")
 let ab = document.querySelector("#about")
 let c  = 0 ;
+
+let lcd = window.localStorage.getItem("data")
+if(lcd){
+    data = JSON.parse(lcd)
+    console.log(a)
+}
+else{
+    window.localStorage.setItem('data',JSON.stringify(data))
+    console.log("Not Found!")
+}
+
+let lsl = window.localStorage.getItem("last")
+if(lsl){
+    last = JSON.parse(lcd)
+    parseInt(last)
+    console.log(last)
+    a = last
+}
+else{
+    window.localStorage.setItem('last',JSON.stringify(last))
+    console.log("Not Found!")
+}
+
+
+function update(){
+    window.localStorage.clear()
+    window.localStorage.setItem('data',JSON.stringify(data))
+    console.log(a)
+    window.localStorage.setItem('last',JSON.stringify(a))
+
+}
 
 function hide(){
     bar.forEach(element => {
@@ -156,6 +188,7 @@ function rest(){
             clear()
             let b9 = generateElement("div","blocky","b9",cont2.id,"",true)
             generateElement("button","show","",b9.id,"Add a Movie")
+            update()
             generate()
             
         }
@@ -184,6 +217,7 @@ function generateElement(type,cls = "",id = "",parent,content,ret="false"){
             for(keys in data){
                 if(`a-${data[keys]['id']}` == el.parentElement.id){
                     delete data[keys]
+                    update()
                 }
             }
             el.parentElement.remove()

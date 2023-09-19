@@ -198,12 +198,12 @@ input:focus{
 .show{
     background: #9333ea;
     color: white;
-    font-family: calibri;
+    font-family: arbutus;
     font-weight: bold;
     font-size: 1.2rem;
     border: none;
-    padding: 3px;
-    box-shadow:2px 2px 2px #26303e;
+    padding: 5px;
+    box-shadow:2px 2px 2px #636363;
 
     transition-property: all;
     transition-duration: 0.23s;
@@ -270,11 +270,17 @@ nav{
 img{
 
     display: block;
-    max-width: 1000px;
+    max-width: 80vw;
     margin: 0 auto;
     border-radius: 5px;
 }
 
+@media screen and (min-width:1000px){
+    img{
+        max-width: 800px;
+
+    }
+}
 
 
 @media screen and (max-width:600px) {
@@ -436,7 +442,7 @@ header{
 
 .tdd{
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
 .content h3{
